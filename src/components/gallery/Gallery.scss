@@ -1,0 +1,41 @@
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    max-height: 100vh;
+    max-width: 100vw;
+
+    .images {
+        overflow-y: auto;
+        width: 60%;
+        margin: 30px;
+    
+        .image-tile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            float: left;
+            margin: 20px;
+            width: 250px;
+            height: 250px;
+
+            .image-title {
+                max-width: 250px;
+                height: 50px;
+            }
+        }
+    }
+
+    .filters {
+        margin: 30px;
+        width: 10%;
+        min-width: 100px;
+
+        .filter {
+            margin: 35px;
+        }
+    }
+}

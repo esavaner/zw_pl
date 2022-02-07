@@ -1,0 +1,14 @@
+
+
+.bubble {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    margin: 20px;
+    padding: 20px;
+    min-width: 50%;
+    border-radius: 10px;
+    background: white;
+}
