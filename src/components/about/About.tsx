@@ -9,8 +9,17 @@ interface AboutProps {
 export default function About(props: AboutProps) {
     return (
         <div className='about'>
-            <button>About me</button>
-            <button>Contact</button>
+            <span>Zosia Wiktorek</span>
+            <div className='buttons'>
+                <button>
+                    About me
+                    <i className='gg-arrow-right'></i>
+                </button>
+                <button>
+                    Contact
+                    <i className='gg-arrow-right'></i>
+                </button>
+            </div>
         </div>
     );
 }

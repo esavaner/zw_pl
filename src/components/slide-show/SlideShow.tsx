@@ -42,6 +42,7 @@ export default function SlideShow(props: SlideShowProps) {
 
     return (
         <div className='slide-show'>
+            <span className='latest'>Latest</span>
             <Cycle {...smallProps}></Cycle>
             { open && 
                 <Lightbox close={() => setOpen(false)}>

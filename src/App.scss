@@ -5,10 +5,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 
     .back-image {
-        background: url('./resources/tester.jpg');
-        opacity: 0.3;
+        background: url('./resources/tester3.jpg');
+        opacity: 0.7;
         position: absolute;
         top: 0;
         left: 0;
@@ -17,15 +18,14 @@
         background-size: 100vw 100vh;
         background-repeat: no-repeat;
         z-index: -100;
+        //filter: brightness(90%);
     }
     
-    .main {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
+
+    .nav {
+        position: fixed;
+        top: 50px;
+        right: 50px;
+        z-index: 1000;
     }
 }

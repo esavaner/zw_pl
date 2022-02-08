@@ -1,42 +1,38 @@
 
 .expand {
-    outline: 0;
-    margin: 20px;
-    border: none;
-    background: red;
-    border-radius: 0;
-    transition: 0.5s;
+    $button-top: 100px; 
 
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.5s ease-in-out;
+    z-index: 300;
 
-    .visible {
-        width: 200px;
-        height: 200px;
-        transition: 0.5s;
-        overflow: hidden;
+
+    button.open {
+        position: absolute;
+        top: $button-top;
+        left: calc(100% - 45px);
     }
 
-    &.active {
-        .visible {
-            width: 80vw;
-            height: 90vh;
+    &.expand-enter {
+        clip-path: circle(25px at calc(100% - 45px) $button-top);
+
+        &.expand-enter-active {
+            clip-path: circle(75%);
         }
-        z-index: 300;
     }
 
-    &:active {
-        transform: scale3d(0.96, 0.96, 1);
+    &.expand-exit {
+        z-index: 200;
     }
-
-    &:hover {
-        border-radius: 30%;
-        animation: wobble 15s 0.5s ease-in-out alternate infinite;
-    }
-    
 }
 
   

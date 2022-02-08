@@ -29,13 +29,13 @@ export function reduceCycle(images: Image[]) {
         const i = state.imageIndex;
         switch(action.type) {
         case CActionType.NEXT:
-            return (im.length < i + 2)
-                ? state
+            return i + 2 > images.length
+                ? {...state, imageIndex: 0, selected: im[0], time: 100}
                 : {...state, imageIndex: i + 1, selected: im[i + 1], time: 100};
 
         case CActionType.PREV:
             return (0 > i - 1)
-                ? state
+                ? {...state, imageIndex: im.length - 1, selected: im[im.length - 1], time: 100}
                 : {...state, imageIndex: i - 1, selected: im[i - 1], time: 100};
 
         case CActionType.TIMER:
@@ -89,17 +89,21 @@ export default function Cycle(props: CycleProps) {
     return (
         <div className='cycle'>
             <div className={`cycle-pane ${props.dark ? 'dark' : ''}`}>
-                <button className='prev' onClick={() => dispatch({type: CActionType.PREV})}>&#10094;</button>
+                <button className='prev' onClick={() => dispatch({type: CActionType.PREV})}>
+                    <i className='gg-chevron-left'></i>
+                </button>
                 <CSSTransition
                     in={true}
                     key={state.selected.src}
-                    classNames='example'
+                    classNames='img-slide'
                     timeout={{enter: 1000, exit: 1000}}
                 >   
-                    <ImagePane width={props.width} height={props.height} image={state.selected} select={selectImage}></ImagePane>
+                    <ImagePane image={state.selected} select={selectImage}></ImagePane>
                     
                 </CSSTransition>
-                <button className='next' onClick={() => dispatch({type: CActionType.NEXT})}>&#10095;</button>
+                <button className='next' onClick={() => dispatch({type: CActionType.NEXT})}>
+                    <i className='gg-chevron-right'></i>
+                </button>
             </div>
             { props.timer && 
                 <div className='out-timer'>

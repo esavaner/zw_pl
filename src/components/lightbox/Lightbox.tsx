@@ -10,7 +10,12 @@ interface LightboxProps {
 export default function Lightbox(props: LightboxProps) {
     return (
         <div className='lightbox'>
-            <button className='close' onClick={props.close}>X</button>
+            <div className='top-pane'>
+                <button className='close' onClick={props.close}>
+                    <i className='gg-arrow-left'></i>
+                </button>
+                <span>back</span>
+            </div>
             { props.children }
         </div>
     );
