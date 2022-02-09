@@ -9,9 +9,9 @@ import {images} from './resources/images';
 import { sizes, techniques, years } from 'components/gallery/FilterOptions';
 import SlideShow from 'components/slide-show/SlideShow';
 import About from 'components/about/About';
-import Bubble from 'components/bubble/Bubble';
 import Row from 'components/row/Row';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import Button from 'components/button/Button';
 
 
 enum ExpandType {
@@ -23,53 +23,51 @@ enum ExpandType {
 
 
 const paintingsGallery: GalleryProps = {
+    header: 'Paintings',
     images: images,
     filters: [years, techniques, sizes],
 };
 
 const drawingsGallery: GalleryProps = {
+    header: 'Drawings',
     images: images,
     filters: [years, techniques, sizes],
 };
 
 const digitalGallery: GalleryProps = {
+    header: 'Digital',
     images: images,
-    filters: [years, techniques, sizes],
+    filters: [years],
 };
 
 function App() {
     const [eT, setET] = useState(ExpandType.HOME);
     const expand = () => {
-        console.log(eT);
+        const home = <Expand background={ExpandType.HOME}>
+            <SlideShow images={images}></SlideShow>
+            <About></About>
+        </Expand>;
         switch(eT) {
         case ExpandType.HOME:
-            return <Expand>
-                <SlideShow images={images}></SlideShow>
-                <About></About>
-            </Expand>;
+            return home;
         
         case ExpandType.PAINTINGS:
-            return <Expand color='red'>
+            return <Expand background={ExpandType.PAINTINGS}>
                 <Gallery {...paintingsGallery}></Gallery>
             </Expand>;
 
         case ExpandType.DRAWINGS:
-            return <Expand color='green'>
+            return <Expand background={ExpandType.DRAWINGS}>
                 <Gallery {...drawingsGallery}></Gallery>
             </Expand>;
 
         case ExpandType.DIGITAL:
-            return <Expand color='blue'>
+            return <Expand background={ExpandType.DIGITAL}>
                 <Gallery {...digitalGallery}></Gallery>
             </Expand>;
 
         default:
-            return <Expand>
-                <Row>
-                    <SlideShow images={images}></SlideShow>
-                    <About></About>
-                </Row>
-            </Expand>;
+            return home;
         }
     };
 
@@ -80,17 +78,17 @@ function App() {
             <div className='back-image'></div>
             <div className='nav'>
                 <Row>
-                    <button onClick={() => setET(ExpandType.HOME)}>Home</button>
-                    <button onClick={() => setET(ExpandType.PAINTINGS)}>Paintings</button>
-                    <button onClick={() => setET(ExpandType.DRAWINGS)}>Drawings</button>
-                    <button onClick={() => setET(ExpandType.DIGITAL)}>Digital</button>
+                    <Button click={() => setET(ExpandType.HOME)}>Home</Button>
+                    <Button click={() => setET(ExpandType.PAINTINGS)}>Paintings</Button>
+                    <Button click={() => setET(ExpandType.DRAWINGS)}>Drawings</Button>
+                    <Button click={() => setET(ExpandType.DIGITAL)}>Digital</Button>
                 </Row>
             </div>
             <TransitionGroup>
                 <CSSTransition
                     key={eT}
                     classNames='expand'
-                    timeout={{enter: 500, exit: 500}}
+                    timeout={{enter: 600, exit: 600}}
                 >
                     {expand()}
                 </CSSTransition>

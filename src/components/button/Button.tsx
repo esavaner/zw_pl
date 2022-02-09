@@ -3,22 +3,13 @@ import React from 'react';
 import './Button.scss';
 
 interface ButtonProps {
-    iconType?: string,
-    children?: React.ReactNode,
-}
-
-function getIcon(iconType: string) {
-    switch(iconType) {
-    case 'home':
-        return <i className='gg-home'></i>;
-    default:
-        return '';
-    }
+    children?: React.ReactNode;
+    click?: () => void
 }
 
 export default function Button(props: ButtonProps) {
     return (
-        <button>{getIcon(props.iconType || '')}
+        <button className='btn' onClick={props.click}>
             {props.children}
         </button>
     );

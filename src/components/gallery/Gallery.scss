@@ -2,37 +2,71 @@
 .gallery {
     display: flex;
     justify-content: center;
+    flex-direction: row;
     overflow: hidden;
-    max-height: 100vh;
-    max-width: 100vw;
+    height: 100%;
+    width: 100%;
 
-    .images {
-        overflow-y: auto;
-        width: 60%;
-        margin: 30px;
+    $top-margin: 150px;
+    $tile: 250px;
+    $tile-margin: 20px;
+
+    $title-height: 50px;
+
+    h1 {
+        position: absolute;
+        top: 0;
+        width: 200px;
+        left: calc(50% - 100px);
+    }
+
+    .scrollable {
+        overflow-y: scroll;
+        margin-top: $top-margin;
+        height: calc(100% - $top-margin);
+        width: 65%;
+
+        .images {
     
-        .image-tile {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-            float: left;
-            margin: 20px;
-            width: 250px;
-            height: 250px;
+            .image-tile {
+                text-align: center;
+                float: left;
+                margin: $tile-margin;
+                width: $tile;
+                height: $tile;
 
-            .image-title {
-                max-width: 250px;
-                height: 50px;
+                .img-box {
+                    width: 100%;
+                    height: calc(100% - $title-height);
+
+                    img {
+                        cursor: pointer;
+                        max-width: 100%;
+                        max-height: 100%;
+                        transition: 0.5s;
+                    
+                        &:hover {
+                            transform: scale3d(1.07, 1.07, 1);
+                        }
+                    }
+                }
+
+                div.image-title {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    max-width: 250px;
+                    height: $title-height;
+                }
             }
         }
     }
 
+
     .filters {
         margin: 30px;
-        width: 10%;
-        min-width: 100px;
+        margin-top: $top-margin;
+        min-width: 150px;
 
         .filter {
             margin: 35px;

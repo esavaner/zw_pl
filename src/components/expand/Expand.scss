@@ -1,6 +1,6 @@
 
 .expand {
-    $button-top: 100px; 
+    $button-top: 80px; 
 
     position: fixed;
     top: 0;
@@ -12,9 +12,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.6s ease-in-out;
     z-index: 300;
 
+    &.home {
+        background-size: 100vw 100vh;
+        background-repeat: no-repeat;
+        background: url('../../resources/tester3.jpg');
+    }
+
+    &.paintings {
+        background: rgb(114, 20, 20);
+    }
+
+    &.drawings {
+        background: rgb(206, 163, 83);
+    }
+
+    &.digital {
+        background: rgb(21, 43, 141);
+    }
 
     button.open {
         position: absolute;
@@ -23,10 +40,24 @@
     }
 
     &.expand-enter {
-        clip-path: circle(25px at calc(100% - 45px) $button-top);
+        &.home {
+            clip-path: circle(1px at calc(100% - 335px) $button-top);
+        }
+    
+        &.paintings {
+            clip-path: circle(1px at calc(100% - 245px) $button-top);
+        }
+    
+        &.drawings {
+            clip-path: circle(1px at calc(100% - 155px) $button-top);
+        }
+    
+        &.digital {
+            clip-path: circle(1px at calc(100% - 65px) $button-top);
+        }
 
         &.expand-enter-active {
-            clip-path: circle(75%);
+            clip-path: circle(100%);
         }
     }
 

@@ -4,12 +4,12 @@ import './Expand.scss';
 
 interface ExpandProps {
     children?: React.ReactNode;
-    color?: string;
+    background?: string;
 }
 
 export default function Expand(props: ExpandProps) {
     return (
-        <div className='expand' style={{background: props.color}}>
+        <div className={`expand ${props.background}`}>
             { props.children }
         </div>
     );

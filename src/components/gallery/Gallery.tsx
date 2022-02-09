@@ -7,9 +7,12 @@ import Cycle, { reduceCycle, CycleState, CActionType } from 'components/cycle/Cy
 import './Gallery.scss';
 import ImagePane from 'components/image-pane/ImagePane';
 import Lightbox from 'components/lightbox/Lightbox';
+import Row from 'components/row/Row';
+import Column from 'components/column/Column';
 
 export interface GalleryProps {
     children?: React.ReactNode;
+    header: string;
     images: Image[];
     filters?: Filter[];
 }
@@ -68,8 +71,10 @@ export default function Gallery(props: GalleryProps) {
             })
             .map((image, index) => 
                 <div className='image-tile' key={'image' + index}>
-                    <ImagePane width={200} height={200} image={image} select={() =>selectImage(index)}></ImagePane>
-                    <span className='image-title'>{image.title}</span>
+                    <div className='img-box'>
+                        <img src={image.src} onClick={() =>selectImage(index)}></img>
+                    </div>
+                    <div className='image-title'>{image.title}</div>
                 </div>
             );
     };
@@ -101,11 +106,14 @@ export default function Gallery(props: GalleryProps) {
 
     return (
         <div className='gallery'>
+            <h1>{props.header}</h1>
             <div className='filters'>
                 { filters }
             </div>
-            <div className='images'>
-                { filterImages(props.images) }
+            <div className='scrollable'>
+                <div className='images'>
+                    { filterImages(props.images) }
+                </div>
             </div>
             { open && 
                 <Lightbox close={() => setOpen(false)}>

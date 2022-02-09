@@ -1,3 +1,5 @@
+import Button from 'components/button/Button';
+import Row from 'components/row/Row';
 import React from 'react';
 
 import './About.scss';
@@ -10,16 +12,16 @@ export default function About(props: AboutProps) {
     return (
         <div className='about'>
             <span>Zosia Wiktorek</span>
-            <div className='buttons'>
-                <button>
+            <Row>
+                <Button>
                     About me
                     <i className='gg-arrow-right'></i>
-                </button>
-                <button>
+                </Button>
+                <Button>
                     Contact
                     <i className='gg-arrow-right'></i>
-                </button>
-            </div>
+                </Button>
+            </Row>
         </div>
     );
 }
