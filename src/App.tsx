@@ -1,98 +1,66 @@
-import React, { useState } from 'react';
-import Expand from 'components/expand/Expand';
-import Gallery, { GalleryProps } from 'components/gallery/Gallery';
+import React, { useContext, useState } from 'react';
 import './App.scss';
 import './components/icons/all.scss';
 
 // import loc from './components/lang/translate';
 import {images} from './resources/images';
-import { sizes, techniques, years } from 'components/gallery/FilterOptions';
-import SlideShow from 'components/slide-show/SlideShow';
-import About from 'components/about/About';
 import Row from 'components/row/Row';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Button from 'components/button/Button';
+import { AT, Context } from 'components/store/Store';
+import Expand from 'components/expand/Expand';
+import Gallery from 'components/gallery/Gallery';
+import SlideShow from 'components/slide-show/SlideShow';
+import About from 'components/about/About';
+import Lightbox from 'components/lightbox/Lightbox';
+import Cycle from 'components/cycle/Cycle';
 
 
-enum ExpandType {
-    HOME = 'home',
-    PAINTINGS = 'paintings',
-    DRAWINGS = 'drawings',
-    DIGITAL = 'digital',
-}
-
-
-const paintingsGallery: GalleryProps = {
-    header: 'Paintings',
-    images: images,
-    filters: [years, techniques, sizes],
-};
-
-const drawingsGallery: GalleryProps = {
-    header: 'Drawings',
-    images: images,
-    filters: [years, techniques, sizes],
-};
-
-const digitalGallery: GalleryProps = {
-    header: 'Digital',
-    images: images,
-    filters: [years],
-};
 
 function App() {
-    const [eT, setET] = useState(ExpandType.HOME);
+    const {state, dispatch} = useContext(Context);
+    localStorage.setItem('lang', 'en');
+
     const expand = () => {
-        const home = <Expand background={ExpandType.HOME}>
-            <SlideShow images={images}></SlideShow>
-            <About></About>
-        </Expand>;
-        switch(eT) {
-        case ExpandType.HOME:
-            return home;
-        
-        case ExpandType.PAINTINGS:
-            return <Expand background={ExpandType.PAINTINGS}>
-                <Gallery {...paintingsGallery}></Gallery>
+        switch(state.expand) {
+        case AT.PAINTINGS:
+        case AT.DRAWINGS:
+        case AT.DIGITAL:
+            return <Expand background={state.expand}>
+                <Gallery header={state.header} images={state.images} filters={state.filters}></Gallery>
             </Expand>;
-
-        case ExpandType.DRAWINGS:
-            return <Expand background={ExpandType.DRAWINGS}>
-                <Gallery {...drawingsGallery}></Gallery>
+        default: 
+            return <Expand background={state.expand}>
+                <SlideShow images={state.images}></SlideShow>
+                <About></About>
             </Expand>;
-
-        case ExpandType.DIGITAL:
-            return <Expand background={ExpandType.DIGITAL}>
-                <Gallery {...digitalGallery}></Gallery>
-            </Expand>;
-
-        default:
-            return home;
         }
     };
-
-
-    localStorage.setItem('lang', 'en');
     return (
         <div className='app'>
             <div className='back-image'></div>
             <div className='nav'>
                 <Row>
-                    <Button click={() => setET(ExpandType.HOME)}>Home</Button>
-                    <Button click={() => setET(ExpandType.PAINTINGS)}>Paintings</Button>
-                    <Button click={() => setET(ExpandType.DRAWINGS)}>Drawings</Button>
-                    <Button click={() => setET(ExpandType.DIGITAL)}>Digital</Button>
+                    <Button click={() => dispatch({type: AT.HOME})}>Home</Button>
+                    <Button click={() => dispatch({type: AT.PAINTINGS})}>Paintings</Button>
+                    <Button click={() => dispatch({type: AT.DRAWINGS})}>Drawings</Button>
+                    <Button click={() => dispatch({type: AT.DIGITAL})}>Digital</Button>
                 </Row>
             </div>
             <TransitionGroup>
                 <CSSTransition
-                    key={eT}
+                    key={state.expand}
                     classNames='expand'
                     timeout={{enter: 600, exit: 600}}
                 >
                     {expand()}
                 </CSSTransition>
             </TransitionGroup>
+            { state.lightbox &&
+                <Lightbox>
+                    <Cycle {...state.cycleProps}></Cycle>
+                </Lightbox>
+            }
         </div>
     );
 }

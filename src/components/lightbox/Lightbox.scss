@@ -1,9 +1,11 @@
+@import '../styles/variables';
+
 .lightbox {
     --ggs: 1;
 
     display: flex;
-    position: fixed;
-    z-index: 1000;
+    position: absolute;
+    z-index: $lightbox-z;
     top: 0;
     left: 0;
     width: 100vw;

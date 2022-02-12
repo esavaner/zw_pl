@@ -1,17 +1,18 @@
-import React from 'react';
+import { AT, Context } from 'components/store/Store';
+import React, { useContext } from 'react';
 
 import './Lightbox.scss';
 
-interface LightboxProps {
+export interface LightboxProps {
     children?: React.ReactNode;
-    close: () => void;
 }
 
 export default function Lightbox(props: LightboxProps) {
+    const {dispatch} = useContext(Context);
     return (
         <div className='lightbox'>
             <div className='top-pane'>
-                <button className='close' onClick={props.close}>
+                <button className='close' onClick={() => dispatch({type: AT.LIGHTBOXCLOSE})}>
                     <i className='gg-arrow-left'></i>
                 </button>
                 <span>back</span>

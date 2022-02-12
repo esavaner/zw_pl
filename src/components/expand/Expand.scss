@@ -1,8 +1,10 @@
 
+@import '../styles/variables';
+
 .expand {
     $button-top: 80px; 
 
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     height: 100vh;
@@ -13,7 +15,7 @@
     justify-content: center;
     align-items: center;
     transition: all 0.6s ease-in-out;
-    z-index: 300;
+    z-index: $expand-z;
 
     &.home {
         background-size: 100vw 100vh;
@@ -62,7 +64,7 @@
     }
 
     &.expand-exit {
-        z-index: 200;
+        z-index: $expand-exit-z;
     }
 }
 

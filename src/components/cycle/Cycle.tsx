@@ -1,6 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import ImagePane from 'components/image-pane/ImagePane';
 import { Image } from 'resources/images';
 
 import './Cycle.scss';
@@ -64,13 +63,11 @@ export function reduceCycle(images: Image[]) {
 }
 
 
-interface CycleProps {
-    dark: boolean;
+export interface CycleProps {
+    dark?: boolean;
     images: Image[];
     imageInedx: number;
-    timer: boolean;
-    width: number;
-    height: number;
+    timer?: boolean;
     click: (index: number) => void
 }
 

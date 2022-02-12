@@ -1,14 +1,10 @@
 import FilterPane from 'components/filter-pane/FilterPane';
-import React, { useReducer, useState } from 'react';
-import { emptyImage, Image } from 'resources/images';
+import React, { useContext, useReducer } from 'react';
+import { Image } from 'resources/images';
 import { Filter, FilterType } from './FilterOptions';
-import Cycle, { reduceCycle, CycleState, CActionType } from 'components/cycle/Cycle';
 
 import './Gallery.scss';
-import ImagePane from 'components/image-pane/ImagePane';
-import Lightbox from 'components/lightbox/Lightbox';
-import Row from 'components/row/Row';
-import Column from 'components/column/Column';
+import { AT, Context } from 'components/store/Store';
 
 export interface GalleryProps {
     children?: React.ReactNode;
@@ -42,12 +38,17 @@ export default function Gallery(props: GalleryProps) {
     };
 
     const [stateFilter, dispatchFilter] = useReducer(reducer, initialFilter);
-    const [open, setOpen] = useState(false);
-    const [index, setIndex] = useState(0);
+    const {dispatch} = useContext(Context);
 
     const selectImage = (index: number) => {
-        setIndex(index);
-        setOpen(true);
+        const cycleProps  = {
+            images: filterImages,
+            imageInedx: index,
+            dark: false,
+            timer: false,
+            click: () => null,
+        };
+        dispatch({type: AT.LIGHTBOXOPEN, cycleProps: cycleProps});
     };
 
     const alterProp = (image: Image, filterType: FilterType) => {
@@ -58,26 +59,24 @@ export default function Gallery(props: GalleryProps) {
         }
     };
 
-    const filterImages = (images: Image[]) => {
-        return images
-            .filter(image => {
-                if (stateFilter.filters) {
-                    for (const filter of stateFilter.filters) {
-                        if (filter.active.length !== 0 && (!image[filter.type as FilterType] || !filter.active.includes(alterProp(image, filter.type as FilterType))))
-                            return false;
-                    }
-                }
-                return true;
-            })
-            .map((image, index) => 
-                <div className='image-tile' key={'image' + index}>
-                    <div className='img-box'>
-                        <img src={image.src} onClick={() =>selectImage(index)}></img>
-                    </div>
-                    <div className='image-title'>{image.title}</div>
-                </div>
-            );
-    };
+    const filterImages = props.images.filter(image => {
+        if (stateFilter.filters) {
+            for (const filter of stateFilter.filters) {
+                if (filter.active.length !== 0 && (!image[filter.type as FilterType] || !filter.active.includes(alterProp(image, filter.type as FilterType))))
+                    return false;
+            }
+        }
+        return true;
+    });
+
+    const filteredImages = filterImages.map((image, index) => 
+        <div className='image-tile' key={'image' + index}>
+            <div className='img-box'>
+                <img src={image.src} onClick={() =>selectImage(index)}></img>
+            </div>
+            <div className='image-title'>{image.title}</div>
+        </div>
+    );
 
 
     const setFilter = (filter: Filter, filterIndex: number) => {
@@ -94,16 +93,6 @@ export default function Gallery(props: GalleryProps) {
         </div>
     );
 
-    const largeProps = {
-        images: props.images,
-        imageInedx: index,
-        height: 850,
-        width: 850,
-        dark: false,
-        timer: false,
-        click: () => 'a',
-    };
-
     return (
         <div className='gallery'>
             <h1>{props.header}</h1>
@@ -112,14 +101,9 @@ export default function Gallery(props: GalleryProps) {
             </div>
             <div className='scrollable'>
                 <div className='images'>
-                    { filterImages(props.images) }
+                    { filteredImages }
                 </div>
             </div>
-            { open && 
-                <Lightbox close={() => setOpen(false)}>
-                    <Cycle {...largeProps}></Cycle>
-                </Lightbox>
-            }
         </div>
     );
 }
