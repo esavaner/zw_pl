@@ -1,0 +1,16 @@
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    z-index: 100;
+    background: rgb(44, 44, 44);
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+        margin: 3px 20px;
+    }
+}

@@ -70,9 +70,9 @@ export default function Gallery(props: GalleryProps) {
     });
 
     const filteredImages = filterImages.map((image, index) => 
-        <div className='image-tile' key={'image' + index}>
+        <div className='image-tile' key={'image' + index} onClick={() =>selectImage(index)}>
             <div className='img-box'>
-                <img src={image.src} onClick={() =>selectImage(index)}></img>
+                <img src={image.src}></img>
             </div>
             <div className='image-title'>{image.title}</div>
         </div>

@@ -1,5 +1,6 @@
 
 @import '../styles/variables';
+@import '../styles/colors';
 
 .expand {
     $button-top: 80px; 
@@ -24,15 +25,15 @@
     }
 
     &.paintings {
-        background: rgb(114, 20, 20);
+        background: $expand1;
     }
 
     &.drawings {
-        background: rgb(206, 163, 83);
+        background: $expand2;
     }
 
     &.digital {
-        background: rgb(21, 43, 141);
+        background: $expand3;
     }
 
     button.open {

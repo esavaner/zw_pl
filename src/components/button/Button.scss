@@ -1,14 +1,15 @@
+@import '../styles/colors';
+@import '../styles/variables';
 
 button.btn {
-    $color: white;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $color;
-    border: 2px solid $color;
+    color: $font-color;
+    border: $border;
+    border-radius: $border-radius;
     background: none;
-    border-radius: 5px;
     margin: 10px;
     padding: 10px 5px;
     min-width: 70px;

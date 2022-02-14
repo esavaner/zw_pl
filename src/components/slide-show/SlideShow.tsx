@@ -27,7 +27,7 @@ export default function SlideShow(props: SlideShowProps) {
     const smallProps = {
         images: props.images,
         imageInedx: 0,
-        dark: true,
+        dark: false,
         timer: true,
         click: selectImage,
     };

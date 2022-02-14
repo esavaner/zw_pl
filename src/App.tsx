@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './App.scss';
 import './components/icons/all.scss';
 
 // import loc from './components/lang/translate';
-import {images} from './resources/images';
 import Row from 'components/row/Row';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Button from 'components/button/Button';
@@ -14,6 +13,7 @@ import SlideShow from 'components/slide-show/SlideShow';
 import About from 'components/about/About';
 import Lightbox from 'components/lightbox/Lightbox';
 import Cycle from 'components/cycle/Cycle';
+import Footer from 'components/footer/Footer';
 
 
 
@@ -61,6 +61,7 @@ function App() {
                     <Cycle {...state.cycleProps}></Cycle>
                 </Lightbox>
             }
+            <Footer></Footer>
         </div>
     );
 }

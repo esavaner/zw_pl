@@ -1,8 +1,13 @@
 
 @import './components/styles/variables';
+@import './components/styles/colors';
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Lato, sans-serif;
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: normal;
+    }
 }
 
 .app {
@@ -11,7 +16,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: $font-color;
 
     .back-image {
         background: url('./resources/tester3.jpg');
@@ -37,6 +42,6 @@ body {
     .separator {
         height: 300px;
         width: 2px;
-        background: white;
+        background: $font-color;
     }
 }

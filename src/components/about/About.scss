@@ -1,5 +1,4 @@
-
-
+@import '../styles/colors';
 .about {
     margin: 0px 20px;
 
@@ -18,7 +17,7 @@
         margin: 10px 20px;
     
         &:visited {
-            color: white;
+            color: $font-color;
         }
     }
 }
