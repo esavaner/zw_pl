@@ -1,7 +1,8 @@
 import FilterPane from 'components/filter-pane/FilterPane';
-import React, { useContext, useReducer } from 'react';
+import React, { useContext, useReducer, useState } from 'react';
 import { Image } from 'resources/images';
 import { Filter, FilterType } from './FilterOptions';
+import loc from 'components/lang/translate';
 
 import './Gallery.scss';
 import { AT, Context } from 'components/store/Store';
@@ -93,11 +94,22 @@ export default function Gallery(props: GalleryProps) {
         </div>
     );
 
+    const [filtersOpen, toggleFilters] = useState(false);
+
     return (
         <div className='gallery'>
-            <h1>{props.header}</h1>
+            <h1>{loc(props.header)}</h1>
             <div className='filters'>
-                { filters }
+                <div className='filters-top'>
+                    <span>{loc('FILTERS')}</span>
+                    <button className='filters-expand' onClick={() => toggleFilters(!filtersOpen)}>
+                        <i className='gg-arrows-expand-right'></i>
+                    </button>
+                </div>
+                <div className={`filters-panels ${filtersOpen ? 'open' : ''}`}>
+                    { filters }
+                </div>
+                
             </div>
             <div className='scrollable'>
                 <div className='images'>

@@ -1,7 +1,22 @@
 {
-    "DIGITAL": "Digital",
-    "DRAWINGS": "Rysunki",
-    "HOME": "Strona główna",
+    "A": "a",
+    "ACRYLIC": "Akryl",
+    "ADD": "Dodaj",
+    "BACK": "powrót",
     "CONTACT": "Kontakt",
-    "PAINTINGS": "Malarstwo"
+    "DATE": "Data",
+    "DIGITAL": "Cyfrowe",
+    "DRAWINGS": "Rysunki",
+    "FILE": "Plik",
+    "FILTERS": "Filtry",
+    "HOME": "Strona Główna",
+    "LATEST": "Najnowsze",
+    "OIL": "Olej",
+    "PAINTINGS": "Obrazy",
+    "SIZE": "Rozmiar",
+    "TITLE": "Tytuł",
+    "TECHNIQUE": "Technika",
+    "TYPE": "Typ",
+    "YEAR": "Rok",
+    "z": "z"
 }

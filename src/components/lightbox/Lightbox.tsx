@@ -1,5 +1,6 @@
 import { AT, Context } from 'components/store/Store';
 import React, { useContext } from 'react';
+import loc from 'components/lang/translate';
 
 import './Lightbox.scss';
 
@@ -15,7 +16,7 @@ export default function Lightbox(props: LightboxProps) {
                 <button className='close' onClick={() => dispatch({type: AT.LIGHTBOXCLOSE})}>
                     <i className='gg-arrow-left'></i>
                 </button>
-                <span>back</span>
+                <span>{loc('BACK')}</span>
             </div>
             { props.children }
         </div>

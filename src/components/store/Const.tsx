@@ -4,19 +4,19 @@ import {images} from 'resources/images';
 
 
 export const paintingsGallery: GalleryProps = {
-    header: 'Paintings',
+    header: 'PAINTINGS',
     images: images,
     filters: [years, techniques, sizes],
 };
 
 export const drawingsGallery: GalleryProps = {
-    header: 'Drawings',
+    header: 'DRAWINGS',
     images: images,
     filters: [years, techniques, sizes],
 };
 
 export const digitalGallery: GalleryProps = {
-    header: 'Digital',
+    header: 'DIGITAL',
     images: images,
     filters: [years],
 };

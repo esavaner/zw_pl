@@ -1,7 +1,22 @@
 {
+    "A": "a",
+    "ACRYLIC": "Acrylic",
+    "ADD": "Add",
+    "BACK": "back",
+    "CONTACT": "Contact",
+    "DATE": "Date",
     "DIGITAL": "Digital",
     "DRAWINGS": "Drawings",
+    "FILE": "File",
+    "FILTERS": "Filters",
     "HOME": "Home page",
-    "CONTACT": "Contact",
-    "PAINTINGS": "Paintings"
+    "LATEST": "Latest",
+    "OIL": "Oil",
+    "PAINTINGS": "Paintings",
+    "SIZE": "Size",
+    "TITLE": "Title",
+    "TECHNIQUE": "Technique",
+    "TYPE": "Type",
+    "YEAR": "Year",
+    "z": "z"
 }

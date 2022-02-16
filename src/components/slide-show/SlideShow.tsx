@@ -3,6 +3,7 @@ import { AT, Context } from 'components/store/Store';
 import React, { useContext} from 'react';
 import { Image } from 'resources/images';
 import Cycle, { CycleProps } from '../cycle/Cycle';
+import loc from 'components/lang/translate';
 
 import './SlideShow.scss';
 
@@ -34,7 +35,7 @@ export default function SlideShow(props: SlideShowProps) {
 
     return (
         <div className='slide-show'>
-            <span className='latest'>Latest</span>
+            <span className='latest'>{loc('LATEST')}</span>
             <Cycle {...smallProps}></Cycle>
         </div>
     );

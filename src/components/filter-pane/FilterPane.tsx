@@ -1,5 +1,6 @@
 import { Filter } from 'components/gallery/FilterOptions';
 import React, { useState } from 'react';
+import loc from 'components/lang/translate';
 
 import './FilterPane.scss';
 
@@ -30,7 +31,7 @@ export default function FilterPane(props: FilterProps) {
 
     return (
         <>
-            <h3>{props.filter.title}</h3>
+            <h3>{loc(props.filter.title.toUpperCase())}</h3>
             {options}
         </>
     );

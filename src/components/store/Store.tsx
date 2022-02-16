@@ -1,11 +1,17 @@
 import { CycleProps } from 'components/cycle/Cycle';
 import { Filter } from 'components/gallery/FilterOptions';
+import loc from 'components/lang/translate';
 import React, { createContext, Dispatch, useReducer } from 'react';
 import {Image, images} from 'resources/images';
 import { paintingsGallery, drawingsGallery, digitalGallery } from './Const';
 
 interface StoreProps {
     children?: React.ReactNode
+}
+
+export enum LANG {
+    EN = 'en',
+    PL = 'pl',
 }
 
 export enum AT {
@@ -15,11 +21,17 @@ export enum AT {
     PAINTINGS = 'paintings',
     DRAWINGS = 'drawings',
     DIGITAL = 'digital',
+    LANG = 'lang',
 }
 
 export interface ActionOpen {
     type: AT.LIGHTBOXOPEN,
     cycleProps: CycleProps,
+}
+
+export interface ActionLang {
+    type: AT.LANG,
+    lang: string,
 }
 
 export interface Action {
@@ -33,6 +45,7 @@ export interface State {
     header: string,
     cycleProps: CycleProps,
     lightbox: boolean,
+    lang: string,
 }
 
 const initial : State = {
@@ -40,6 +53,7 @@ const initial : State = {
     images: images,
     header: 'Home',
     lightbox: false,
+    lang: LANG.PL,
     filters: [],
     cycleProps: {
         images: images,
@@ -52,7 +66,7 @@ const initial : State = {
 
 
 
-const reducer = (state: State, action: Action | ActionOpen) => {
+const reducer = (state: State, action: Action | ActionOpen | ActionLang) => {
     switch (action.type) {
     case AT.HOME:
         return initial;
@@ -86,7 +100,12 @@ const reducer = (state: State, action: Action | ActionOpen) => {
         return {...state,
             ...digitalGallery,
             expand: AT.DIGITAL
-        }; 
+        };
+    
+    case AT.LANG:
+        return {...state,
+            lang: action.lang
+        };
 
     default:
         return initial;
@@ -94,7 +113,7 @@ const reducer = (state: State, action: Action | ActionOpen) => {
 };
 
 export const Context = createContext<{
-    state: State, dispatch: Dispatch<Action | ActionOpen>
+    state: State, dispatch: Dispatch<Action | ActionOpen | ActionLang>
 }>({
     state: initial, dispatch: () => null
 });
