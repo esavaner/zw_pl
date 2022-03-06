@@ -1,6 +1,6 @@
 import { Filter } from 'components/gallery/FilterOptions';
 import React, { useState } from 'react';
-import loc from 'components/lang/translate';
+import loc from 'translation/translate';
 
 import './FilterPane.scss';
 

@@ -12,18 +12,8 @@ export default function About() {
                 <Column>
                     <span>Zosia Wiktorek</span>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean suscipit neque lacinia turpis consectetur, vitae pharetra mi varius. Suspendisse sed nibh ac nulla ultrices lobortis. Vivamus vel felis quis est ultricies consectetur. Phasellus in neque in tellus sagittis pretium blandit at purus. Ut nec est elit. Suspendisse tristique nisl vel massa accumsan, a vulputate nunc sodales. Vestibulum nibh velit, sollicitudin at tellus id, dapibus blandit mi. Praesent eu dignissim purus. Suspendisse potenti.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean suscipit neque lacinia turpis consectetur, vitae pharetra mi varius. Suspendisse sed nibh ac nulla ultrices lobortis. Vivamus vel felis quis est ultricies consectetur. Phasellus in neque in tellus sagittis pretium blandit at purus. Ut nec est elit. Suspendisse tristique nisl vel massa accumsan, a vulputate nunc sodales
                     </p>
-                    <Row>
-                        <Button>
-                            About me
-                            <i className='gg-arrow-right'></i>
-                        </Button>
-                        <Button>
-                            Contact
-                            <i className='gg-arrow-right'></i>
-                        </Button>
-                    </Row>
                 </Column>
                 <div className='separator'></div>
                 <Column>

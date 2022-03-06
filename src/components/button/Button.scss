@@ -2,27 +2,30 @@
 @import '../styles/variables';
 
 button.btn {
+    --ggs: 0.8;
 
     display: flex;
     align-items: center;
     justify-content: center;
     color: $font-color;
-    border: $border;
-    border-radius: $border-radius;
+    border: 1px solid transparent;
+    // border: $border;
+    // border-radius: $border-radius;
     background: none;
     margin: 10px;
     padding: 10px 5px;
     min-width: 70px;
     min-height: 40px;
     cursor: pointer;
+    transition: all 0.3s;
     i {
+        margin-right: 5px;
         transition: all 0.2s;
     }
     
 
     &:hover {
-        i {
-            transform: translateX(10%);
-        }
+        border: $border;
+        border-radius: $border-radius;
     }
 }

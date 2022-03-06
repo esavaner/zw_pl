@@ -9,8 +9,8 @@
     z-index: $lightbox-z;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: auto;
     justify-content: center;
     align-items: center;
@@ -24,7 +24,7 @@
         width: 100%;
         font-size: 20px;
         color: $font-color;
-        height: 50px;
+        height: $cycle-top-margin;
         button.close {
             border: none;
             background: none;

@@ -1,51 +1,62 @@
 @import '../styles/variables';
 
-form {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-
-    label {
-        margin-left: 5px;
-    }
-
-    input, select {
-        width: 300px;
-        height: 35px;
-        font-size: 17px;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: $font-color;
-        border: $border;
-        border-radius: $border-radius;
-        background: none;
-        margin: 10px;
-        margin-bottom: 15px;
-        padding: 5px;
-        cursor: pointer;
+div.upload {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    form {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 5px;
     
-        &[type='submit'] {
-            width: 50px;
-            background: $font-color;
-            color: black;
+        label {
+            margin-left: 5px;
         }
     
-        i {
-            transition: all 0.2s;
-        }
+        input, select {
+            width: 300px;
+            height: 35px;
+            font-size: 17px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $font-color;
+            border: $border;
+            border-radius: $border-radius;
+            background: none;
+            margin: 10px;
+            margin-bottom: 15px;
+            padding: 5px;
+            cursor: pointer;
         
-    
-        &:hover {
+            &[type='submit'] {
+                width: 50px;
+                background: $font-color;
+                color: black;
+            }
+        
             i {
-                transform: translateX(10%);
+                transition: all 0.2s;
+            }
+            
+        
+            &:hover {
+                i {
+                    transform: translateX(10%);
+                }
             }
         }
-    }
-    
-    option {
-        color: black;
+        
+        option {
+            color: black;
+        }
     }
 }
+
 

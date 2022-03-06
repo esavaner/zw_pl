@@ -1,7 +1,7 @@
 export enum FilterType {
     SIZE = 'size',
     TECHNIQUE = 'technique',
-    YEAR = 'year',
+    YEAR = 'date',
 }
 
 

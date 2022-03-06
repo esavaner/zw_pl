@@ -104,10 +104,14 @@ export default function Cycle(props: CycleProps) {
                                 enterActive: `img-slide-enter-${state.direction}-active`,
                                 exit: `img-slide-exit-${state.direction}`,
                                 exitActive: `img-slide-exit-${state.direction}-active`,
+                                appear: `img-slide-appear-${state.direction}`,
+                                appearActive: `img-slide-appear-${state.direction}-active`,
                             }}
                             timeout={{enter: 300, exit: 300}}
-                        >   
-                            <img src={state.selected.src} onClick={selectImage}></img>
+                        >
+                            <div className='img-slide-tile'>
+                                <img src={state.selected.src} onClick={selectImage}></img>
+                            </div>
                             
                         </CSSTransition>
                     </TransitionGroup>

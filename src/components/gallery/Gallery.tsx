@@ -2,7 +2,7 @@ import FilterPane from 'components/filter-pane/FilterPane';
 import React, { useContext, useReducer, useState } from 'react';
 import { Image } from 'resources/images';
 import { Filter, FilterType } from './FilterOptions';
-import loc from 'components/lang/translate';
+import loc from 'translation/translate';
 
 import './Gallery.scss';
 import { AT, Context } from 'components/store/Store';
@@ -54,7 +54,7 @@ export default function Gallery(props: GalleryProps) {
 
     const alterProp = (image: Image, filterType: FilterType) => {
         if (filterType === FilterType.YEAR) {
-            return image[filterType];
+            return image[filterType].split('-')[0];
         } else {
             return image[filterType];
         }

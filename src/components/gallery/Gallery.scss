@@ -1,8 +1,9 @@
 @import '../styles/variables';
 @import '../styles/colors';
 
+$top-margin: 50px;
+
 .gallery {
-    $top-margin: 200px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -10,6 +11,7 @@
     padding-top: $top-margin;
     height: 100%;
     width: 100%;
+    box-sizing: border-box;
 
     
     $tile: 250px;
@@ -122,7 +124,7 @@
 @media screen and (min-width: 768px) {
     .gallery {
         flex-direction: row;
-
+        padding-top: $top-margin * 2.2;
         .scrollable {
             .images {
                 .image-tile {

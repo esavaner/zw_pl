@@ -1,6 +1,6 @@
 import { AT, Context } from 'components/store/Store';
 import React, { useContext } from 'react';
-import loc from 'components/lang/translate';
+import loc from 'translation/translate';
 
 import './Lightbox.scss';
 

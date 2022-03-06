@@ -1,8 +1,8 @@
-import Column from 'components/column/Column';
-import loc from 'components/lang/translate';
-import React, { useReducer, useState } from 'react';
+import loc from 'translation/translate';
+import React, { useReducer } from 'react';
 
 import './Upload.scss';
+import { uploadImage } from 'services/firebase';
 
 enum FA {
     TITLE = 'title',
@@ -13,17 +13,17 @@ enum FA {
     FILE = 'file',
 }
 
-interface FormState {
+export interface FormState {
     title: string,
     type: string,
     tech: string,
     size: string,
-    date: any,
+    date: string,
     file: any,
 }
 
 const reducerForm = (state: FormState, action: any) => {
-    return {...state, [action.type]: action.value};
+    return {...state, [action.type]: action.type === FA.FILE ? action.target.files[0] : action.target.value};
 };
 
 export default function Upload() {
@@ -32,41 +32,44 @@ export default function Upload() {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        console.log(form, e);
+        console.log(e, form);
+        uploadImage(form);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>{loc('TITLE')}</label>
-            <input type='text' value={form.title} onChange={(e) => dispatchForm({type: FA.TITLE, value: e.target.value})}/>
-            <label>{loc('TYPE')}</label>
-            <select value={form.type} onChange={(e) => dispatchForm({type: FA.TYPE, value: e.target.value})}>
-                <option value=''>{loc('SELECT')}</option>
-                <option value='painting'>{loc('PAINTINGS')}</option>
-                <option value='drawing'>{loc('DRAWINGS')}</option>
-                <option value='digital'>{loc('DIGITAL')}</option>
-            </select>
-            { (form.type === 'painting') &&
-            <>
-                <label>{loc('TECHNIQUE')}</label>
-                <select value={form.tech} onChange={(e) => dispatchForm({type: FA.TECH, value: e.target.value})}>
-                    <option value='oil'>{loc('OIL')}</option>
-                    <option value='acrylic'>{loc('ACRILIC')}</option>
+        <div className='upload'>
+            <form onSubmit={handleSubmit}>
+                <label>{loc('TITLE')}</label>
+                <input type='text' value={form.title} onChange={(e) => dispatchForm({type: FA.TITLE, target: e.target})}/>
+                <label>{loc('TYPE')}</label>
+                <select value={form.type} onChange={(e) => dispatchForm({type: FA.TYPE, target: e.target})}>
+                    <option value=''>{loc('SELECT')}</option>
+                    <option value='painting'>{loc('PAINTINGS')}</option>
+                    <option value='drawing'>{loc('DRAWINGS')}</option>
+                    <option value='digital'>{loc('DIGITAL')}</option>
                 </select>
-            </>
-            }
-            { (form.type === 'painting' || form.type === 'drawing') &&
-            <>
-                <label>{loc('SIZE')}</label>
-                <input type='text' value={form.size} onChange={(e) => dispatchForm({type: FA.SIZE, value: e.target.value})}/>
-            </>
-            }
-            <label>{loc('DATE')}</label>
-            <input type='date' value={form.date} onChange={(e) => dispatchForm({type: FA.DATE, value: e.target.value})}/>
-            <label>{loc('FILE')}</label>
-            <input type='file' value={form.file} onChange={(e) => dispatchForm({type: FA.FILE, value: e.target.value})}/>
+                { (form.type === 'painting') &&
+                <>
+                    <label>{loc('TECHNIQUE')}</label>
+                    <select value={form.tech} onChange={(e) => dispatchForm({type: FA.TECH, target: e.target})}>
+                        <option value='oil'>{loc('OIL')}</option>
+                        <option value='acrylic'>{loc('ACRYLIC')}</option>
+                    </select>
+                </>
+                }
+                { (form.type === 'painting' || form.type === 'drawing') &&
+                <>
+                    <label>{loc('SIZE')}</label>
+                    <input type='text' value={form.size} onChange={(e) => dispatchForm({type: FA.SIZE, target: e.target})}/>
+                </>
+                }
+                <label>{loc('DATE')}</label>
+                <input type='date' value={form.date} onChange={(e) => dispatchForm({type: FA.DATE, target: e.target})}/>
+                <label>{loc('FILE')}</label>
+                <input type='file' onChange={(e) => dispatchForm({type: FA.FILE, target: e.target})}/>
 
-            <input type='submit' value={loc('ADD')}/>
-        </form>
+                <input type='submit' value={loc('ADD')}/>
+            </form>
+        </div>
     );
 }

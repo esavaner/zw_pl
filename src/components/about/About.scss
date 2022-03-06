@@ -1,23 +1,48 @@
 @import '../styles/colors';
+
 .about {
-    margin: 0px 20px;
 
     span {
-        font-size: 70px;
-        margin: 20px;
+        font-size: 30px;
+        margin: 10px;
     }
 
     p {
-        max-width: 450px;
+        margin-right: 10px;
+        width: 240px;
         text-align: justify;
         text-justify: inter-word;
     }
 
     a {
         margin: 10px 20px;
-    
+        color: $font-color;
         &:visited {
             color: $font-color;
         }
     }
 }
+
+@media screen and (min-width: 425px) {
+    .about {
+        margin: 0px 20px;
+        span {
+            font-size: 40px;
+        }
+        p {
+            width: 310px;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .about {
+        span {
+            font-size: 50px;
+        }
+        p {
+            width: 360px;
+        }
+    }
+}
+

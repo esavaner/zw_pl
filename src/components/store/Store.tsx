@@ -1,6 +1,6 @@
 import { CycleProps } from 'components/cycle/Cycle';
 import { Filter } from 'components/gallery/FilterOptions';
-import loc from 'components/lang/translate';
+import loc from 'translation/translate';
 import React, { createContext, Dispatch, useReducer } from 'react';
 import {Image, images} from 'resources/images';
 import { paintingsGallery, drawingsGallery, digitalGallery } from './Const';
@@ -67,9 +67,17 @@ const initial : State = {
 
 
 const reducer = (state: State, action: Action | ActionOpen | ActionLang) => {
+    const home = {
+        expand: AT.HOME,
+        header: 'Home',
+        images: images,
+    };
+
     switch (action.type) {
     case AT.HOME:
-        return initial;
+        return {...state,
+            ...home
+        };
 
     case AT.LIGHTBOXOPEN:
         return {...state,
@@ -108,7 +116,9 @@ const reducer = (state: State, action: Action | ActionOpen | ActionLang) => {
         };
 
     default:
-        return initial;
+        return {...state,
+            ...home
+        };
     }
 };
 

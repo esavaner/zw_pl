@@ -3,9 +3,19 @@
 $border: 1px solid $font-color;
 $border-radius: 5px;
 
-$nav-top: 50px;
+$nav-top: 100px;
 
+
+// slide-show
+$latest-height: 35px;
+$latest-margin: 10px;
+$cycle-top-margin: $latest-height + $latest-margin;
+
+
+
+// z-indexes
 $lightbox-z: 1000;
+$trigger-z: 110;
 $nav-z: 100;
 $expand-z: 50;
 $expand-exit-z: 10;
