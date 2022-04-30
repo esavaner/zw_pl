@@ -1,24 +1,19 @@
 import { AT, Context } from 'components/store/Store';
 import React, { useContext } from 'react';
-import loc from 'translation/translate';
+import { Image } from 'models/image.model';
+import {Image as ImageAntd} from 'antd';
 
 import './Lightbox.scss';
 
 export interface LightboxProps {
-    children?: React.ReactNode;
+    images: Image[];
 }
 
 export default function Lightbox(props: LightboxProps) {
-    const {dispatch} = useContext(Context);
+    const {state, dispatch} = useContext(Context);
     return (
-        <div className='lightbox'>
-            <div className='top-pane'>
-                <button className='close' onClick={() => dispatch({type: AT.LIGHTBOXCLOSE})}>
-                    <i className='gg-arrow-left'></i>
-                </button>
-                <span>{loc('BACK')}</span>
-            </div>
-            { props.children }
-        </div>
+        <ImageAntd.PreviewGroup preview={{visible: state.lightbox, current: state.imageIndex, onVisibleChange: () => dispatch({type: AT.LIGHTBOXCLOSE})}}>
+            {props.images.map((image) => <ImageAntd key={image.src} src={image.src}/>)}
+        </ImageAntd.PreviewGroup>
     );
 }

@@ -1,9 +1,8 @@
-import { CycleProps } from 'components/cycle/Cycle';
 import { Filter } from 'components/gallery/FilterOptions';
-import loc from 'translation/translate';
 import React, { createContext, Dispatch, useReducer } from 'react';
-import {Image, images} from 'resources/images';
-import { paintingsGallery, drawingsGallery, digitalGallery } from './Const';
+import {images} from 'resources/images';
+import {Image} from '../../models/image.model';
+import { paintingsGallery, drawingsGallery, digitalGallery} from '../../models/gallery.model';
 
 interface StoreProps {
     children?: React.ReactNode
@@ -26,7 +25,8 @@ export enum AT {
 
 export interface ActionOpen {
     type: AT.LIGHTBOXOPEN,
-    cycleProps: CycleProps,
+    images: Image[],
+    imageIndex: number,
 }
 
 export interface ActionLang {
@@ -41,9 +41,9 @@ export interface Action {
 export interface State {
     expand: AT,
     images: Image[],
+    imageIndex: number,
     filters: Filter[],
     header: string,
-    cycleProps: CycleProps,
     lightbox: boolean,
     lang: string,
 }
@@ -51,17 +51,11 @@ export interface State {
 const initial : State = {
     expand: AT.HOME,
     images: images,
+    imageIndex: 0,
     header: 'Home',
     lightbox: false,
     lang: LANG.PL,
     filters: [],
-    cycleProps: {
-        images: images,
-        imageInedx: 0,
-        dark: false,
-        timer: false,
-        click: () => null,
-    }
 };
 
 
@@ -82,7 +76,8 @@ const reducer = (state: State, action: Action | ActionOpen | ActionLang) => {
     case AT.LIGHTBOXOPEN:
         return {...state,
             lightbox: true,
-            cycleProps: action.cycleProps
+            images: action.images,
+            imageIndex: action.imageIndex
         };
 
     case AT.LIGHTBOXCLOSE:

@@ -1,10 +1,11 @@
 import FilterPane from 'components/filter-pane/FilterPane';
 import React, { useContext, useReducer, useState } from 'react';
-import { Image } from 'resources/images';
+import {Image} from '../../models/image.model';
 import { Filter, FilterType } from './FilterOptions';
 import loc from 'translation/translate';
 
 import './Gallery.scss';
+import ImageBox from 'components/image-box/ImageBox';
 import { AT, Context } from 'components/store/Store';
 
 export interface GalleryProps {
@@ -39,19 +40,8 @@ export default function Gallery(props: GalleryProps) {
     };
 
     const [stateFilter, dispatchFilter] = useReducer(reducer, initialFilter);
+
     const {dispatch} = useContext(Context);
-
-    const selectImage = (index: number) => {
-        const cycleProps  = {
-            images: filterImages,
-            imageInedx: index,
-            dark: false,
-            timer: false,
-            click: () => null,
-        };
-        dispatch({type: AT.LIGHTBOXOPEN, cycleProps: cycleProps});
-    };
-
     const alterProp = (image: Image, filterType: FilterType) => {
         if (filterType === FilterType.YEAR) {
             return image[filterType].split('-')[0];
@@ -71,10 +61,8 @@ export default function Gallery(props: GalleryProps) {
     });
 
     const filteredImages = filterImages.map((image, index) => 
-        <div className='image-tile' key={'image' + index} onClick={() =>selectImage(index)}>
-            <div className='img-box'>
-                <img src={image.src}></img>
-            </div>
+        <div className='image-tile' key={'image' + index}>
+            <ImageBox width={160} image={image} onClick={() => dispatch({type: AT.LIGHTBOXOPEN, images: props.images, imageIndex: index})}/>
             <div className='image-title'>{image.title}</div>
         </div>
     );

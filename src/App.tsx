@@ -8,7 +8,6 @@ import { AT, Context } from 'components/store/Store';
 import Expand from 'components/expand/Expand';
 import Gallery from 'components/gallery/Gallery';
 import Lightbox from 'components/lightbox/Lightbox';
-import Cycle from 'components/cycle/Cycle';
 import Footer from 'components/footer/Footer';
 import { Route, Routes } from 'react-router-dom';
 import Upload from 'components/upload/Upload';
@@ -49,11 +48,7 @@ function App() {
                                 {expand()}
                             </CSSTransition>
                         </TransitionGroup>
-                        { state.lightbox &&
-                        <Lightbox>
-                            <Cycle {...state.cycleProps}></Cycle>
-                        </Lightbox>
-                        }
+                        <Lightbox images={state.images} />
                     </>
                 }>
                 </Route>
@@ -61,6 +56,7 @@ function App() {
                     <Upload></Upload>
                 }>
                 </Route>
+                <Route path="*" element={<h1>404</h1>}/>
             </Routes>
             <Footer></Footer>
         </div>
