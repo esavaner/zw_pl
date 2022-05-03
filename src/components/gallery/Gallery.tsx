@@ -1,17 +1,18 @@
 import FilterPane from 'components/filter-pane/FilterPane';
 import React, { useContext, useReducer, useState } from 'react';
-import {Image} from '../../models/image.model';
+import {ART_TYPE, Image} from '../../models/image.model';
 import { Filter, FilterType } from './FilterOptions';
 import loc from 'translation/translate';
 
 import './Gallery.scss';
 import ImageBox from 'components/image-box/ImageBox';
 import { AT, Context } from 'components/store/Store';
+import useDownloadImages from 'hooks/useDownlaodImages';
 
 export interface GalleryProps {
     children?: React.ReactNode;
     header: string;
-    images: Image[];
+    artType: ART_TYPE;
     filters?: Filter[];
 }
 
@@ -32,6 +33,7 @@ interface FilterState {
 
 
 export default function Gallery(props: GalleryProps) {
+    const { list: images } = useDownloadImages(props.artType);
     const initialFilter : FilterState = {filterIndex: 0, filters: props.filters};
     const reducer = (state: FilterState, action: FilterAction) => {
         if (!props.filters) return state;
@@ -50,7 +52,7 @@ export default function Gallery(props: GalleryProps) {
         }
     };
 
-    const filterImages = props.images.filter(image => {
+    const filterImages = images.filter(image => {
         if (stateFilter.filters) {
             for (const filter of stateFilter.filters) {
                 if (filter.active.length !== 0 && (!image[filter.type as FilterType] || !filter.active.includes(alterProp(image, filter.type as FilterType))))
@@ -62,7 +64,7 @@ export default function Gallery(props: GalleryProps) {
 
     const filteredImages = filterImages.map((image, index) => 
         <div className='image-tile' key={'image' + index}>
-            <ImageBox width={160} image={image} onClick={() => dispatch({type: AT.LIGHTBOXOPEN, images: props.images, imageIndex: index})}/>
+            <ImageBox width={160} image={image} onClick={() => dispatch({type: AT.LIGHTBOXOPEN, lightboxImages: images, imageIndex: index})}/>
             <div className='image-title'>{image.title}</div>
         </div>
     );

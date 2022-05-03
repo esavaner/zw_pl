@@ -13,3 +13,5 @@ export type Image = {
     technique: string,
     artType: ART_TYPE 
 }
+
+export const ImageBaseFolder = 'IMAGES';

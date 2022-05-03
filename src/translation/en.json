@@ -12,12 +12,15 @@
     "HOME": "Home page",
     "LATEST": "Latest",
     "OIL": "Oil",
+    "OTHER": "Other",
     "PAINTINGS": "Paintings",
     "SELECT": "Select",
     "SIZE": "Size",
     "TITLE": "Title",
     "TECHNIQUE": "Technique",
     "TYPE": "Type",
+    "UPLOAD_DATA": "Data upload",
+    "UPLOAD_IMG": "Image upload",
     "YEAR": "Year",
     "z": "z"
 }

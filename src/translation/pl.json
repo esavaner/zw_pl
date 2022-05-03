@@ -12,12 +12,15 @@
     "HOME": "Strona Główna",
     "LATEST": "Najnowsze",
     "OIL": "Olej",
+    "OTHER": "Inne",
     "PAINTINGS": "Obrazy",
     "SELECT": "wybierz",
     "SIZE": "Rozmiar",
     "TITLE": "Tytuł",
     "TECHNIQUE": "Technika",
     "TYPE": "Typ",
+    "UPLOAD_DATA": "Wgrywanie danych",
+    "UPLOAD_IMG": "Wgrywanie obrazu",
     "YEAR": "Rok",
     "z": "z"
 }

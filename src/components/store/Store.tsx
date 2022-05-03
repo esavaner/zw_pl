@@ -1,7 +1,7 @@
 import { Filter } from 'components/gallery/FilterOptions';
 import React, { createContext, Dispatch, useReducer } from 'react';
 import {images} from 'resources/images';
-import {Image} from '../../models/image.model';
+import {ART_TYPE, Image} from '../../models/image.model';
 import { paintingsGallery, drawingsGallery, digitalGallery} from '../../models/gallery.model';
 
 interface StoreProps {
@@ -25,7 +25,7 @@ export enum AT {
 
 export interface ActionOpen {
     type: AT.LIGHTBOXOPEN,
-    images: Image[],
+    lightboxImages: Image[],
     imageIndex: number,
 }
 
@@ -40,7 +40,8 @@ export interface Action {
 
 export interface State {
     expand: AT,
-    images: Image[],
+    lightboxImages: Image[],
+    artType: ART_TYPE,
     imageIndex: number,
     filters: Filter[],
     header: string,
@@ -50,12 +51,13 @@ export interface State {
 
 const initial : State = {
     expand: AT.HOME,
-    images: images,
+    lightboxImages: [],
     imageIndex: 0,
     header: 'Home',
     lightbox: false,
     lang: LANG.PL,
     filters: [],
+    artType: ART_TYPE.OTHER
 };
 
 
@@ -76,7 +78,7 @@ const reducer = (state: State, action: Action | ActionOpen | ActionLang) => {
     case AT.LIGHTBOXOPEN:
         return {...state,
             lightbox: true,
-            images: action.images,
+            lightboxImages: action.lightboxImages,
             imageIndex: action.imageIndex
         };
 

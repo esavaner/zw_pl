@@ -1,25 +1,22 @@
 
 import { AT, Context } from 'components/store/Store';
 import React, { useContext} from 'react';
-import { Image } from '../../models/image.model';
 import loc from 'translation/translate';
 
 import './SlideShow.scss';
 import Carousel from 'components/carousel/Carousel';
 import ImageBox from 'components/image-box/ImageBox';
+import useDownloadLatest from 'hooks/useDownloadLatest';
 
-interface SlideShowProps {
-    images: Image[];
-}
-
-export default function SlideShow(props: SlideShowProps) {
+export default function SlideShow() {
     const {dispatch} = useContext(Context);
 
+    const {latest} = useDownloadLatest(5);
     return (
         <div className='slide-show'>
             <div className='latest'>{loc('LATEST')}</div>
             <Carousel autoplay>
-                {props.images.map((img, index) => <ImageBox key={img.src} image={img} onClick={() => dispatch({type: AT.LIGHTBOXOPEN, images: props.images, imageIndex: index})}/>)}
+                {latest.map((img, index) => <ImageBox key={img.src} image={img} onClick={() => dispatch({type: AT.LIGHTBOXOPEN, lightboxImages: latest, imageIndex: index})}/>)}
             </Carousel>
         </div>
     );

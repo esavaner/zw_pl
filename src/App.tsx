@@ -24,7 +24,7 @@ function App() {
         case AT.DRAWINGS:
         case AT.DIGITAL:
             return <Expand background={state.expand}>
-                <Gallery header={state.header} images={state.images} filters={state.filters}></Gallery>
+                <Gallery header={state.header} filters={state.filters} artType={state.artType}></Gallery>
             </Expand>;
         default: 
             return <Expand background={state.expand}>
@@ -48,7 +48,7 @@ function App() {
                                 {expand()}
                             </CSSTransition>
                         </TransitionGroup>
-                        <Lightbox images={state.images} />
+                        <Lightbox images={state.lightboxImages} />
                     </>
                 }>
                 </Route>
