@@ -20,13 +20,15 @@ export default function FilterPane(props: FilterProps) {
     };
 
     const options = props.filter.values.map((option: string | number) =>
-        <label key={`checkbox-${option}`}>
-            <input
-                type='checkbox'
-                onChange={() => handleChange(option)}
-            />
-            {option}
-        </label>
+        <div key={`checkbox-${option}`}>
+            <label>
+                <input
+                    type='checkbox'
+                    onChange={() => handleChange(option)}
+                />
+                {option}
+            </label>
+        </div>
     );
 
     return (

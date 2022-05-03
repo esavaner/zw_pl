@@ -64,7 +64,7 @@ export default function Gallery(props: GalleryProps) {
 
     const filteredImages = filterImages.map((image, index) => 
         <div className='image-tile' key={'image' + index}>
-            <ImageBox width={160} image={image} onClick={() => dispatch({type: AT.LIGHTBOXOPEN, lightboxImages: images, imageIndex: index})}/>
+            <ImageBox width={180} image={image} onClick={() => dispatch({type: AT.LIGHTBOXOPEN, lightboxImages: images, imageIndex: index})}/>
             <div className='image-title'>{image.title}</div>
         </div>
     );
