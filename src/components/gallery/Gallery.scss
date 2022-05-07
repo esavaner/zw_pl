@@ -62,8 +62,7 @@ $top-margin: 50px;
                 }
 
                 &:hover {
-                    border: $border;
-                    border-radius: $border-radius;
+                    @include general-hover();
                 }
 
                 div.image-title {

@@ -20,3 +20,9 @@ $nav-z: 100;
 $expand-z: 50;
 $expand-exit-z: 10;
 $back-z: -100;
+
+@mixin general-hover() {
+    border: $border;
+    border-radius: $border-radius;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+}
