@@ -1,16 +1,16 @@
-
 footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 100;
-    background: rgb(44, 44, 44);
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgb(44, 44, 44);
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  height: 30px;
 
-    span {
-        margin: 3px 20px;
-    }
+  span {
+    margin: 3px 20px;
+  }
 }

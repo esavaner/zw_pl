@@ -1,94 +1,63 @@
+@import '../../styles/variables';
+@import '../../styles/colors';
 
-@import '../styles/variables';
-@import '../styles/colors';
-
-button.menu-trigger {
-    position: absolute;
-    top: 10px;
-    right: 0px;
-    z-index: $trigger-z;
-    font-size: 24px;
-    text-align: center;
-    margin-right: 0;
-}
+// button.menu-trigger {
+//   position: absolute;
+//   top: 10px;
+//   right: 0px;
+//   z-index: $trigger-z;
+//   font-size: 24px;
+//   text-align: center;
+//   margin-right: 0;
+// }
 
 nav {
-    position: absolute;
-    top: 0;
-    right: 0px;
-    height: 100%;
-    z-index: $nav-z;
-    font-size: 18px;
-    text-align: center;
-    overflow: hidden;
-    box-sizing: border-box;
-    pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 60px 0px;
+  font-size: 14px;
+  text-transform: uppercase;
+  z-index: 5;
+  position: relative;
 
-    ul {
-        margin: 0;
-        padding: 50px;
-        padding-top: $nav-top;
-        height: 100%;
-        list-style-type: none;
-        padding-inline-start: 0;
-        float: right;
-        box-sizing: border-box;
-        background: $lightbox-color;
-        transition: all 0.5s;
-        pointer-events: initial;
+  .links {
+    display: flex;
+    gap: 40px;
 
-        &.closed {
-            transform: translateX(100%);
-        }
+    a {
+      color: $font-color;
+
+      &.link-active {
+        border-bottom: 1px solid #000000;
+      }
     }
-
-    select {
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: $font-color;
-        background: none;
-        margin: 10px;
-        padding: 10px 5px;
-        cursor: pointer;
-        border: 1px solid transparent;
-
-        &:hover {
-            @include general-hover();
-        }
-    }
-    
-    option {
-        color: black;
-    }
+  }
+  select {
+    background: none;
+    cursor: pointer;
+    border: none;
+  }
 }
 
-@media screen and (min-width: 768px) {
-    button.menu-trigger {
-        display: none;
-    }
-    nav {    
-        height: auto;    
-        ul {
-            float: right;
-            background: none;
-            padding: 0;
-            padding-top: $nav-top/2;
-            padding-right: 50px;
-            height: auto;
-            &.closed {
-                transform: translateX(0%);
-            }
-            li {
-                float: left;
-            }
-        }
-    }
-}
-
-// @media screen and (min-width: 1024px) {
-//     nav {
-//         margin: 0 100px;
+// @media screen and (min-width: 768px) {
+//   button.menu-trigger {
+//     display: none;
+//   }
+//   nav {
+//     height: auto;
+//     ul {
+//       float: right;
+//       background: none;
+//       padding: 0;
+//       padding-top: $nav-top/2;
+//       padding-right: 50px;
+//       height: auto;
+//       &.closed {
+//         transform: translateX(0%);
+//       }
+//       li {
+//         float: left;
+//       }
 //     }
+//   }
 // }

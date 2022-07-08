@@ -3,19 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Store from 'components/store/Store';
 import { BrowserRouter } from 'react-router-dom';
 import 'antd/dist/antd.css';
 
+import './assets/Syncopate-Regular.ttf';
+import './assets/Syncopate-Bold.ttf';
+import TranslationProvider from 'translation';
+
 ReactDOM.render(
-    <React.StrictMode>
-        <Store>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        </Store>
-    </React.StrictMode>,
-    document.getElementById('root')
+  <React.StrictMode>
+    <BrowserRouter>
+      <TranslationProvider>
+        <App />
+      </TranslationProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

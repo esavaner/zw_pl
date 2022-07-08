@@ -1,17 +1,26 @@
 import React from 'react';
-import { Image as ImageAntd, ImageProps } from 'antd';
 import { Image } from 'models/image.model';
 
-interface ImageBoxProps extends ImageProps {
-    image: Image;
-    width?: number;
+import './ImageBox.scss';
+
+interface ImageBoxProps {
+  image: Image;
+  onClick?: () => void;
 }
 
-export default function ImageBox({image, width, ...props}: ImageBoxProps) {
-    return <ImageAntd
-        preview={{visible: false}}
-        width={width || 200}
-        src={image.src}
-        {...props}
-    />;
+export default function ImageBox({ image, onClick }: ImageBoxProps) {
+  return (
+    <div className="img-tile">
+      <div className="img-wrapper" onClick={onClick}>
+        <img src={image.src} />
+      </div>
+      <span>{image.title}</span>
+    </div>
+  );
+  // return <ImageAntd
+  //     preview={{visible: false}}
+  //     width={width || 200}
+  //     src={image.src}
+  //     {...props}
+  // />;
 }

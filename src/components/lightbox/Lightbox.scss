@@ -1,41 +1,81 @@
-@import '../styles/variables';
-@import '../styles/colors';
+@import '../../styles/variables';
+@import '../../styles/colors';
 
 .lightbox {
-    --ggs: 1;
+  --ggs: 1;
 
+  display: flex;
+  position: absolute;
+  z-index: $lightbox-z;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: $lightbox-color;
+  color: #2eaff0;
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 40px;
+  }
+
+  .lightbox-display {
     display: flex;
-    position: absolute;
-    z-index: $lightbox-z;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    background: $lightbox-color;
+    gap: 30px;
 
-
-    .top-pane {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        font-size: 20px;
-        color: $font-color;
-        height: $cycle-top-margin;
-        button.close {
-            border: none;
-            background: none;
-            cursor: pointer;
-            width: 40px;
-            margin-left: 50px;
-            transition: all 0.2s;
-            color: $font-color;
-            &:hover {
-                transform: translateX(-10%);
-            }
-        }
+    .img-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 900px;
+      height: 650px;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
+    .lightbox-right {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      .lightbox-close {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+  .description {
+    color: white;
+  }
+
+  .top-pane {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+    color: $font-color;
+    height: $cycle-top-margin;
+    button.close {
+      border: none;
+      background: none;
+      cursor: pointer;
+      width: 40px;
+      margin-left: 50px;
+      transition: all 0.2s;
+      color: $font-color;
+      &:hover {
+        transform: translateX(-10%);
+      }
+    }
+  }
 }
