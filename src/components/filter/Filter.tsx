@@ -12,17 +12,17 @@ export enum FilterType {
   TECHNIQUE = 'tech',
 }
 
-interface FilterProps {
+interface FilterProps<T> {
   filter: FilterType;
   setOptions: any;
   images: Image[];
 }
 
-export default function FilterPane({
+export default function FilterPane<T>({
   filter,
   images,
   setOptions,
-}: FilterProps) {
+}: FilterProps<T>) {
   const { t } = useContext(TranslationContext) as TranslationContextType;
   const alterProp = (image: Image, filterType: FilterType) =>
     filterType === FilterType.YEAR
@@ -40,7 +40,7 @@ export default function FilterPane({
     const newTab = { ...tab };
     newTab[option] = !newTab[option];
     setTab(newTab);
-    // setOptions(tab);
+    setOptions(newTab);
   };
 
   return (

@@ -2,7 +2,8 @@
 @import '../../styles/colors';
 
 .filter {
-  width: 150px;
+  width: 70px;
+  font-size: 10px;
   label {
     display: flex;
     align-items: center;
@@ -22,5 +23,17 @@
   span {
     margin-bottom: 40px;
     display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .filter {
+    font-size: initial;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .filter {
+    width: 150px;
   }
 }

@@ -23,10 +23,10 @@ const MainPage = () => {
           <a href="https://www.facebook.com/">
             <FiFacebook />
           </a>
-          <a href="https://twitter.com/home">
+          <a href="https://www.instagram.com/">
             <FiInstagram />
           </a>
-          <a href="https://www.instagram.com/">
+          <a href="https://www.linkedin.com/">
             <FiLinkedin />
           </a>
         </div>

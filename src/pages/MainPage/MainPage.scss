@@ -2,23 +2,22 @@
 
 .main {
   display: flex;
-  gap: 30px;
+  justify-content: space-between;
   align-items: center;
-  margin-left: 60px;
-  margin-top: 250px;
+  margin: 250px 10px auto;
   position: relative;
   z-index: 5;
 
   span {
-    font-size: 40px;
+    font-size: 22px;
     font-weight: 700;
-
     text-shadow: 15px -9px 20px rgba(54, 57, 86, 0.6);
   }
 
   p {
-    width: 500px;
+    width: 230px;
     line-height: 17px;
+    font-size: 10px;
   }
 
   .icons {
@@ -72,25 +71,30 @@
   filter: blur(100px);
 }
 
-// @media screen and (min-width: 425px) {
-//   .main {
-//     margin: 0px 20px;
-//     span {
-//       font-size: 40px;
-//     }
-//     p {
-//       width: 310px;
-//     }
-//   }
-// }
+@media screen and (min-width: 425px) {
+  .main {
+    margin: 250px 20px auto;
+    span {
+      font-size: 26px;
+    }
+    p {
+      width: 310px;
+      font-size: 14px;
+    }
+  }
+}
 
-// @media screen and (min-width: 1024px) {
-//   .main {
-//     span {
-//       font-size: 50px;
-//     }
-//     p {
-//       width: 360px;
-//     }
-//   }
-// }
+@media screen and (min-width: 768px) {
+  .main {
+    margin: 250px auto auto 60px;
+    justify-content: flex-start;
+    gap: 30px;
+    span {
+      font-size: 40px;
+    }
+    p {
+      width: 500px;
+      font-size: initial;
+    }
+  }
+}

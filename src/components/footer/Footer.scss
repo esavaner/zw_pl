@@ -8,9 +8,13 @@ footer {
   justify-content: space-between;
   align-items: center;
   color: white;
-  height: 30px;
+  height: 50px;
+  padding: 0px 10px;
+  gap: 30px;
+}
 
-  span {
-    margin: 3px 20px;
+@media screen and (min-width: 768px) {
+  footer {
+    height: 30px;
   }
 }

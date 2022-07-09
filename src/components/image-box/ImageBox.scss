@@ -1,17 +1,36 @@
 .img-tile {
   max-height: 265px;
+  text-align: center;
   .img-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 220px;
-    height: 220px;
-    margin-bottom: 20px;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 5px;
     cursor: pointer;
 
     img {
       max-width: 100%;
       max-height: 100%;
+    }
+  }
+  span {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .img-tile {
+    text-align: left;
+    .img-wrapper {
+      width: 220px;
+      height: 220px;
+      margin-bottom: 20px;
+    }
+
+    span {
+      font-size: initial;
     }
   }
 }

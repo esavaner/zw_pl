@@ -7,10 +7,19 @@
   .images {
     display: flex;
     overflow: auto;
+    justify-content: center;
     max-height: 100%;
     flex-flow: row wrap;
-    column-gap: 110px;
+    column-gap: 50px;
     row-gap: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .gallery {
+    .images {
+      column-gap: 110px;
+    }
   }
 }
 

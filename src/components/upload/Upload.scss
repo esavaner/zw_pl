@@ -10,7 +10,6 @@ div.upload {
   height: 100%;
   width: 100%;
   form {
-    background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 5px;
 
@@ -37,9 +36,8 @@ div.upload {
       cursor: pointer;
 
       &[type='submit'] {
-        width: 50px;
         background: $font-color;
-        color: black;
+        color: white;
       }
 
       i {

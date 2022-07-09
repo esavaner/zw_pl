@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 
 import './Navigation.scss';
 import { NavLink } from 'react-router-dom';
@@ -9,22 +9,13 @@ import {
 } from 'translation/TranslationProvider';
 
 export default function Navigation() {
-  const [menu, setMenu] = useState(false);
-
   const { t, lang, setLang } = useContext(
     TranslationContext
   ) as TranslationContextType;
 
-  //   const f = (
-  //     at: AT.HOME | AT.PAINTINGS | AT.DRAWINGS | AT.DIGITAL | AT.LIGHTBOXCLOSE
-  //   ) => {
-  //     dispatch({ type: at });
-  //     setMenu(false);
-  //   };
-
   const links = ['home', 'paintings', 'drawings', 'digital'];
   return (
-    <nav className={menu ? 'opened' : 'closed'}>
+    <nav>
       <div className="links">
         {links.map((link) => (
           <NavLink
