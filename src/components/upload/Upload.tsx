@@ -72,33 +72,21 @@ export default function Upload() {
           <option value={ART_TYPE.DIGITAL}>{t('DIGITAL')}</option>
           <option value={ART_TYPE.OTHER}>{t('OTHER')}</option>
         </select>
-        {form.artType === ART_TYPE.PAINTING && (
-          <>
-            <label>{t('TECHNIQUE')}</label>
-            <select
-              value={form.tech}
-              onChange={(e) =>
-                dispatchForm({ type: FA.TECH, target: e.target })
-              }
-            >
-              <option value="oil">{t('OIL')}</option>
-              <option value="acrylic">{t('ACRYLIC')}</option>
-            </select>
-          </>
-        )}
-        {(form.artType === ART_TYPE.PAINTING ||
-          form.artType === ART_TYPE.DRAWING) && (
-          <>
-            <label>{t('SIZE')}</label>
-            <input
-              type="text"
-              value={form.size}
-              onChange={(e) =>
-                dispatchForm({ type: FA.SIZE, target: e.target })
-              }
-            />
-          </>
-        )}
+        <label>{t('TECH')}</label>
+        <select
+          value={form.tech}
+          onChange={(e) => dispatchForm({ type: FA.TECH, target: e.target })}
+        >
+          <option value="">{t('SELECT')}</option>
+          <option value="oil">{t('OIL')}</option>
+          <option value="acrylic">{t('ACRYLIC')}</option>
+        </select>
+        <label>{t('SIZE')}</label>
+        <input
+          type="text"
+          value={form.size}
+          onChange={(e) => dispatchForm({ type: FA.SIZE, target: e.target })}
+        />
         <label>{t('DATE')}</label>
         <input
           type="date"
