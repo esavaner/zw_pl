@@ -10,12 +10,17 @@ const MainPage = () => {
         <div>
           <span>Zosia Wiktorek</span>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            suscipit neque lacinia turpis consectetur, vitae pharetra mi varius.
-            Suspendisse sed nibh ac nulla ultrices lobortis. Vivamus vel felis
-            quis est ultricies consectetur. Phasellus in neque in tellus
-            sagittis pretium blandit at purus. Ut nec est elit. Suspendisse
-            tristique nisl vel massa accumsan, a vulputate nunc sodales
+            W 2021 r. ukończyłam Akademie Sztuk Pięknych im. Eugeniusza Gepperta
+            we Wrocławiu, na wydziale Rzeźby i Mediacji Sztuki. Dyplom obroniłam
+            w Pracowni Komunikacji Twórczej gdzie moim promotorem był prof.
+            Eugeniusz Józefowski i jego asystentka dr Monika Aleksandrowicz. W
+            ciągu 3 lat brałam udział w wielu wystawach zbiorowych
+            organizowanych przez ASPWro, angażowałam się w projekty kuratorskie
+            oraz zgłębiałam struktury sztuki w jej współczesnym znaczeniu i
+            formie. Obecnie kontynuuje studia magisterskie na wydziale Rzeźby i
+            Mediacji Sztuki. Teraz moją uwagę oprócz malarstwa sztalugowego
+            przykuwają również struktury sieciowe, web design i funkcje kultury
+            wizualnej w obrębie Internetu.
           </p>
         </div>
         <div className="separator"></div>

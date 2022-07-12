@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 250px 10px auto;
+  margin: 150px 10px auto;
   position: relative;
   z-index: 5;
 
@@ -73,7 +73,7 @@
 
 @media screen and (min-width: 425px) {
   .main {
-    margin: 250px 20px auto;
+    margin: 150px 20px auto;
     span {
       font-size: 26px;
     }
@@ -86,7 +86,7 @@
 
 @media screen and (min-width: 768px) {
   .main {
-    margin: 250px auto auto 60px;
+    margin: 150px auto auto 60px;
     justify-content: flex-start;
     gap: 30px;
     span {

@@ -4,6 +4,10 @@ import { Image as ImageAntd } from 'antd';
 import { FiChevronRight, FiChevronLeft, FiX } from 'react-icons/fi';
 
 import './Lightbox.scss';
+import {
+  TranslationContext,
+  TranslationContextType,
+} from 'translation/TranslationProvider';
 
 export interface LightboxProps {
   images: Image[];
@@ -19,6 +23,7 @@ export default function Lightbox({
   imageIndex = 0,
 }: LightboxProps) {
   if (!visible) return null;
+  const { t } = useContext(TranslationContext) as TranslationContextType;
   const [selectedIndex, setSelectedIndex] = useState(imageIndex);
 
   const next = () => {
@@ -33,9 +38,9 @@ export default function Lightbox({
 
   const description = [
     selected.title,
-    selected.tech,
+    t(selected.tech.toUpperCase()),
     selected.size,
-    selected.date,
+    new Date(selected.date).getFullYear(),
   ]
     .filter((el) => !!el)
     .join(', ');
@@ -43,7 +48,7 @@ export default function Lightbox({
   return (
     <div className="lightbox">
       <div className="lightbox-display">
-        <button onClick={prev}>
+        <button onClick={prev} disabled={selectedIndex === 0}>
           <FiChevronLeft />
         </button>
         <div className="img-wrap">

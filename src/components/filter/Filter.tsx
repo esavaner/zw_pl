@@ -1,5 +1,6 @@
+import { alterProp, Filter, FilterType } from 'models/filter.model';
 import { Image } from 'models/image.model';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   TranslationContext,
   TranslationContextType,
@@ -7,52 +8,44 @@ import {
 
 import './Filter.scss';
 
-export enum FilterType {
-  YEAR = 'year',
-  TECHNIQUE = 'tech',
-}
-
-interface FilterProps<T> {
-  filter: FilterType;
-  setOptions: any;
+interface FilterProps {
+  filter: Filter;
+  setFilter: (filter: Filter) => void;
   images: Image[];
 }
 
-export default function FilterPane<T>({
-  filter,
-  images,
-  setOptions,
-}: FilterProps<T>) {
+export default function FilterPane({ filter, images, setFilter }: FilterProps) {
   const { t } = useContext(TranslationContext) as TranslationContextType;
-  const alterProp = (image: Image, filterType: FilterType) =>
-    filterType === FilterType.YEAR
-      ? image.date.split('-')[0]
-      : image[filterType];
 
   const options = Array.from(
     new Set(images.map((image) => alterProp(image, filter)))
-  ).sort((a, b) => a.localeCompare(b));
+  ).sort((a, b) => b.localeCompare(a));
 
-  const [tab, setTab] = useState(
-    Object.fromEntries(options.map((option) => [option, false]))
-  );
-  const handleChange = (option: string | number) => {
-    const newTab = { ...tab };
-    newTab[option] = !newTab[option];
-    setTab(newTab);
-    setOptions(newTab);
+  const handleChange = (option: string) => {
+    const newFilter = { ...filter };
+    newFilter.active.includes(option)
+      ? newFilter.active.splice(newFilter.active.indexOf(option), 1)
+      : newFilter.active.push(option);
+
+    setFilter(newFilter);
   };
+
+  useEffect(() => {
+    const newFilter = { ...filter };
+    newFilter.values = options;
+    setFilter(newFilter);
+  }, [images]);
 
   return (
     <div className="filter">
-      <span>{t(filter.toUpperCase())}</span>
+      <span>{t(filter.type.toUpperCase())}</span>
       {options.map((option) => (
         <label
           key={option}
-          className={tab[option] ? 'selected' : ''}
+          className={filter.active.includes(option) ? 'selected' : ''}
           onClick={() => handleChange(option)}
         >
-          {option}
+          {filter.type === FilterType.YEAR ? option : t(option.toUpperCase())}
         </label>
       ))}
     </div>

@@ -7,11 +7,13 @@
   .images {
     display: flex;
     overflow: auto;
-    justify-content: center;
     max-height: 100%;
     flex-flow: row wrap;
     column-gap: 50px;
     row-gap: 30px;
+    * {
+      flex-basis: 25%;
+    }
   }
 }
 
