@@ -31,7 +31,12 @@ export default function Lightbox({
 
   const selected = images[selectedIndex];
 
-  const description = [selected.title, selected.tech, selected.date]
+  const description = [
+    selected.title,
+    selected.tech,
+    selected.size,
+    selected.date,
+  ]
     .filter((el) => !!el)
     .join(', ');
 

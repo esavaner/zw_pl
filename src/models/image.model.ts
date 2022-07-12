@@ -9,6 +9,7 @@ export type Image = {
   src: string;
   title: string;
   date: string;
+  size?: string;
   tech: string;
   artType: ART_TYPE;
 };

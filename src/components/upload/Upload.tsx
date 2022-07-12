@@ -1,7 +1,7 @@
 import React, { useContext, useReducer, useState } from 'react';
 
 import './Upload.scss';
-import { ART_TYPE } from 'models/image.model';
+import { ART_TYPE, Image } from 'models/image.model';
 import Uploader from 'components/uploader/Uploader';
 import {
   TranslationContext,
@@ -17,14 +17,9 @@ enum FA {
   FILE = 'file',
 }
 
-export interface FormState {
-  title: string;
-  artType: ART_TYPE;
-  tech: string;
-  size: string;
-  date: string;
+export type FormState = Image & {
   file: any;
-}
+};
 
 export default function Upload() {
   const { t } = useContext(TranslationContext) as TranslationContextType;
@@ -42,6 +37,7 @@ export default function Upload() {
     artType: ART_TYPE.OTHER,
     tech: '',
     size: '',
+    src: '',
     date: '',
     file: null,
   };
@@ -80,6 +76,9 @@ export default function Upload() {
           <option value="">{t('SELECT')}</option>
           <option value="oil">{t('OIL')}</option>
           <option value="acrylic">{t('ACRYLIC')}</option>
+          <option value="coal">{t('COAL')}</option>
+          <option value="pastels">{t('PASTELS')}</option>
+          <option value="pencil">{t('PENCIL')}</option>
         </select>
         <label>{t('SIZE')}</label>
         <input
